@@ -1,3 +1,5 @@
+import { OEM_CATALOG_REFERENCES } from './oemCatalogReferences.js';
+
 // Base de données automobile algérienne complète - Scraped & Curated (200+ pièces)
 // Données réelles Oued Smar, Baraki, Birkhadem, Kouba, Boufarik, Dizness.com
 
@@ -15,61 +17,192 @@ export const TOP_POPULAR_CARS = [
 ];
 
 export const BRANDS = [
-  { id: 'renault', name: 'Renault', logo: '🚗' },
-  { id: 'dacia', name: 'Dacia', logo: '🚙' },
-  { id: 'peugeot', name: 'Peugeot', logo: '🦁' },
-  { id: 'hyundai', name: 'Hyundai', logo: '⚡' },
-  { id: 'volkswagen', name: 'Volkswagen', logo: '🇩🇪' },
-  { id: 'seat', name: 'Seat', logo: '🇪🇸' },
-  { id: 'kia', name: 'Kia', logo: '🇰🇷' },
-  { id: 'toyota', name: 'Toyota', logo: '🇯🇵' },
-  { id: 'citroen', name: 'Citroën', logo: '🇫🇷' }
+  { id: 'renault', name: 'Renault' },
+  { id: 'dacia', name: 'Dacia' },
+  { id: 'peugeot', name: 'Peugeot' },
+  { id: 'volkswagen', name: 'Volkswagen' },
+  { id: 'hyundai', name: 'Hyundai' },
+  { id: 'kia', name: 'Kia' },
+  { id: 'toyota', name: 'Toyota' },
+  { id: 'seat', name: 'Seat' },
+  { id: 'citroen', name: 'Citroën' },
+  { id: 'skoda', name: 'Skoda' },
+  { id: 'audi', name: 'Audi' },
+  { id: 'bmw', name: 'BMW' },
+  { id: 'mercedes', name: 'Mercedes-Benz' },
+  { id: 'chevrolet', name: 'Chevrolet' },
+  { id: 'nissan', name: 'Nissan' },
+  { id: 'fiat', name: 'Fiat' },
+  { id: 'ford', name: 'Ford' },
+  { id: 'suzuki', name: 'Suzuki' },
+  { id: 'chery', name: 'Chery' },
+  { id: 'geely', name: 'Geely' },
+  { id: 'dfsk', name: 'DFSK' },
+  { id: 'jac', name: 'JAC' }
 ];
 
 export const MODELS_BY_BRAND = {
   renault: [
     { id: 'symbol', name: 'Symbol', engines: ['1.2 16V (75ch)', '1.6 MPI (85ch)', '1.5 dCi'] },
     { id: 'clio4', name: 'Clio 4', engines: ['1.5 dCi', '0.9 TCe', '1.2 16V'] },
-    { id: 'clio3', name: 'Clio 3', engines: ['1.5 dCi', '1.2 16V'] },
-    { id: 'megane3', name: 'Mégane 3', engines: ['1.5 dCi', '1.9 dCi'] },
-    { id: 'duster', name: 'Duster', engines: ['1.5 dCi 4x2 / 4x4', '1.6 16V'] }
+    { id: 'clio3', name: 'Clio 3', engines: ['1.5 dCi', '1.2 16V', '1.4 Ess'] },
+    { id: 'clio2', name: 'Clio 2 / Campus', engines: ['1.2 Ess', '1.5 dCi', '1.4 Ess'] },
+    { id: 'megane3', name: 'Mégane 3', engines: ['1.5 dCi', '1.9 dCi', '1.6 16V'] },
+    { id: 'megane2', name: 'Mégane 2', engines: ['1.5 dCi', '1.9 dCi', '1.6 16V'] },
+    { id: 'megane4', name: 'Mégane 4', engines: ['1.5 dCi', '1.3 TCe', '1.6 dCi'] },
+    { id: 'duster', name: 'Duster', engines: ['1.5 dCi 4x2 / 4x4', '1.6 16V'] },
+    { id: 'kangoo', name: 'Kangoo', engines: ['1.5 dCi', '1.9 D', '1.2 Ess'] },
+    { id: 'master', name: 'Master', engines: ['2.3 dCi', '2.5 dCi'] },
+    { id: 'fluence', name: 'Fluence', engines: ['1.5 dCi', '1.6 16V'] },
+    { id: 'kadjar', name: 'Kadjar', engines: ['1.5 dCi', '1.6 dCi'] }
   ],
   dacia: [
-    { id: 'sandero', name: 'Sandero Stepway', engines: ['1.5 dCi', '1.6 MPI'] },
-    { id: 'logan', name: 'Logan', engines: ['1.4 MPI', '1.2 16V', '1.5 dCi'] }
+    { id: 'sandero', name: 'Sandero Stepway', engines: ['1.5 dCi', '1.6 MPI', '0.9 TCe'] },
+    { id: 'logan', name: 'Logan', engines: ['1.4 MPI', '1.2 16V', '1.5 dCi'] },
+    { id: 'duster', name: 'Duster', engines: ['1.5 dCi', '1.6 16V'] },
+    { id: 'dokker', name: 'Dokker', engines: ['1.5 dCi', '1.6 MPI'] },
+    { id: 'lodgy', name: 'Lodgy', engines: ['1.5 dCi', '1.2 TCe'] }
   ],
   peugeot: [
     { id: '208', name: '208', engines: ['1.6 HDi', '1.2 VTi PureTech', '1.4 HDi'] },
-    { id: '301', name: '301', engines: ['1.2 VTi', '1.6 HDi'] },
+    { id: '301', name: '301', engines: ['1.2 VTi', '1.6 HDi (92ch)', '1.6 VTi'] },
     { id: '207', name: '207', engines: ['1.4 Ess', '1.4 HDi', '1.6 HDi'] },
-    { id: '308', name: '308', engines: ['1.6 HDi', '2.0 HDi'] }
-  ],
-  hyundai: [
-    { id: 'accent', name: 'Accent RB / Last', engines: ['1.4 Ess', '1.6 CRDi'] },
-    { id: 'tucson', name: 'Tucson', engines: ['2.0 CRDi', '1.6 T-GDi'] },
-    { id: 'i10', name: 'Grand i10', engines: ['1.0 Ess', '1.2 Ess'] },
-    { id: 'i20', name: 'i20', engines: ['1.4 Ess', '1.1 CRDi'] }
+    { id: '206', name: '206 / 206+', engines: ['1.1 Ess', '1.4 Ess', '1.4 HDi'] },
+    { id: '308', name: '308', engines: ['1.6 HDi', '2.0 HDi', '1.2 PureTech'] },
+    { id: '307', name: '307', engines: ['1.6 HDi', '2.0 HDi', '1.6 16V'] },
+    { id: '3008', name: '3008', engines: ['1.6 BlueHDi', '2.0 HDi', '1.6 THP'] },
+    { id: 'partner', name: 'Partner', engines: ['1.6 HDi', '1.9 D', '2.0 HDi'] },
+    { id: 'boxer', name: 'Boxer', engines: ['2.2 HDi', '2.0 BlueHDi'] },
+    { id: '508', name: '508', engines: ['2.0 HDi', '1.6 THP'] }
   ],
   volkswagen: [
     { id: 'golf7', name: 'Golf 7', engines: ['2.0 TDI (110/143/150ch)', '1.6 TDI', 'GTD / GTI'] },
-    { id: 'polo', name: 'Polo', engines: ['1.4 Ess', '1.6 TDI', '1.0 MPI'] },
-    { id: 'caddy', name: 'Caddy', engines: ['2.0 TDI', '1.9 TDI'] }
+    { id: 'golf6', name: 'Golf 6', engines: ['2.0 TDI', '1.6 TDI', '1.4 TSI'] },
+    { id: 'golf8', name: 'Golf 8', engines: ['2.0 TDI', '1.5 TSI'] },
+    { id: 'polo', name: 'Polo', engines: ['1.4 Ess', '1.6 TDI', '1.0 MPI', '1.2 Ess'] },
+    { id: 'caddy', name: 'Caddy', engines: ['2.0 TDI', '1.9 TDI', '1.6 TDI'] },
+    { id: 'passat', name: 'Passat', engines: ['2.0 TDI', '1.8 TSI'] },
+    { id: 'tiguan', name: 'Tiguan', engines: ['2.0 TDI 4Motion', '1.4 TSI'] },
+    { id: 'amarok', name: 'Amarok', engines: ['2.0 BiTDI 4Motion', '3.0 V6 TDI'] },
+    { id: 'transporter', name: 'Transporter T5/T6', engines: ['2.0 TDI', '1.9 TDI'] }
   ],
-  seat: [
-    { id: 'ibiza', name: 'Ibiza', engines: ['1.6 TDI', '1.4 Ess', '1.0 TSI'] },
-    { id: 'leon', name: 'Leon', engines: ['2.0 TDI', '1.6 TDI'] }
+  hyundai: [
+    { id: 'accent', name: 'Accent RB / Last', engines: ['1.4 Ess', '1.6 CRDi (128ch)', '1.5 CRDi'] },
+    { id: 'i10', name: 'Grand i10', engines: ['1.0 Ess', '1.2 Ess'] },
+    { id: 'i20', name: 'i20', engines: ['1.4 Ess', '1.1 CRDi', '1.2 Ess'] },
+    { id: 'i30', name: 'i30', engines: ['1.6 CRDi', '1.4 Ess'] },
+    { id: 'tucson', name: 'Tucson', engines: ['2.0 CRDi (185ch)', '1.6 T-GDi', '2.0 Ess'] },
+    { id: 'santafe', name: 'Santa Fe', engines: ['2.2 CRDi', '2.4 Ess'] },
+    { id: 'elantra', name: 'Elantra', engines: ['1.6 MPI', '2.0 MPI'] },
+    { id: 'creta', name: 'Creta', engines: ['1.6 CRDi', '1.6 Ess'] },
+    { id: 'atos', name: 'Atos', engines: ['1.0 Ess', '1.1 Ess'] },
+    { id: 'h1', name: 'H1 / Starex', engines: ['2.5 CRDi'] },
+    { id: 'h100', name: 'Porter H100', engines: ['2.5 D', '2.5 CRDi'] }
   ],
   kia: [
-    { id: 'picanto', name: 'Picanto', engines: ['1.2 Ess', '1.0 Ess'] },
-    { id: 'sportage', name: 'Sportage', engines: ['2.0 CRDi', '1.6 GDi'] }
+    { id: 'picanto', name: 'Picanto (I / II / III)', engines: ['1.0 Ess', '1.2 Ess'] },
+    { id: 'rio', name: 'Rio', engines: ['1.4 Ess', '1.2 Ess', '1.4 CRDi'] },
+    { id: 'sportage', name: 'Sportage', engines: ['2.0 CRDi', '1.6 GDi', '1.7 CRDi'] },
+    { id: 'cerato', name: 'Cerato', engines: ['1.6 MPI'] },
+    { id: 'sorento', name: 'Sorento', engines: ['2.2 CRDi'] },
+    { id: 'k2500', name: 'K2500 / K2700', engines: ['2.5 CRDi', '2.7 D'] }
   ],
   toyota: [
     { id: 'hilux', name: 'Hilux', engines: ['2.4 D-4D', '2.5 D-4D', '3.0 D-4D'] },
-    { id: 'yaris', name: 'Yaris', engines: ['1.3 VVT-i', '1.4 D-4D'] }
+    { id: 'yaris', name: 'Yaris', engines: ['1.3 VVT-i', '1.4 D-4D', '1.0 VVT-i'] },
+    { id: 'corolla', name: 'Corolla', engines: ['1.4 D-4D', '1.6 VVT-i'] },
+    { id: 'prado', name: 'Land Cruiser Prado', engines: ['3.0 D-4D', '2.8 D-4D', '2.7 Ess'] },
+    { id: 'rav4', name: 'RAV4', engines: ['2.0 D-4D', '2.2 D-4D', '2.5 Hybride'] },
+    { id: 'fortuner', name: 'Fortuner', engines: ['2.7 Ess', '3.0 D-4D'] }
+  ],
+  seat: [
+    { id: 'ibiza', name: 'Ibiza', engines: ['1.6 TDI', '1.4 Ess', '1.0 TSI', '1.2 TSI'] },
+    { id: 'leon', name: 'Leon', engines: ['2.0 TDI', '1.6 TDI', '1.4 TSI', '1.2 TSI'] },
+    { id: 'arona', name: 'Arona', engines: ['1.6 MPI', '1.0 TSI'] },
+    { id: 'ateca', name: 'Ateca', engines: ['2.0 TDI', '1.4 TSI'] }
   ],
   citroen: [
     { id: 'celysee', name: 'C-Elysée', engines: ['1.2 VTi', '1.6 HDi'] },
-    { id: 'c3', name: 'C3', engines: ['1.2 PureTech', '1.6 HDi'] }
+    { id: 'c3', name: 'C3 (II / III)', engines: ['1.2 PureTech', '1.6 HDi', '1.4 HDi'] },
+    { id: 'berlingo', name: 'Berlingo', engines: ['1.6 HDi', '1.9 D', '2.0 HDi'] },
+    { id: 'c4', name: 'C4', engines: ['1.6 HDi', '2.0 HDi'] },
+    { id: 'jumper', name: 'Jumper', engines: ['2.2 HDi', '2.0 BlueHDi'] }
+  ],
+  skoda: [
+    { id: 'octavia', name: 'Octavia (III / IV)', engines: ['2.0 TDI', '1.6 TDI', '1.4 TSI'] },
+    { id: 'fabia', name: 'Fabia', engines: ['1.4 MPI', '1.2 TSI', '1.6 TDI'] },
+    { id: 'rapid', name: 'Rapid', engines: ['1.6 MPI', '1.6 TDI'] },
+    { id: 'superb', name: 'Superb', engines: ['2.0 TDI'] }
+  ],
+  audi: [
+    { id: 'a3', name: 'A3 (8P / 8V / 8Y)', engines: ['2.0 TDI', '1.6 TDI', '1.4 TFSI'] },
+    { id: 'a4', name: 'A4 (B7 / B8 / B9)', engines: ['2.0 TDI', '1.8 TFSI'] },
+    { id: 'q3', name: 'Q3', engines: ['2.0 TDI Quattro', '1.4 TFSI'] },
+    { id: 'q5', name: 'Q5', engines: ['2.0 TDI Quattro', '3.0 TDI'] }
+  ],
+  bmw: [
+    { id: 'serie1', name: 'Série 1 (116d / 118d / 120d)', engines: ['2.0d N47/B47', '1.6d'] },
+    { id: 'serie3', name: 'Série 3 (320d / 318d)', engines: ['2.0d N47/B47', '2.0i'] },
+    { id: 'x1', name: 'X1', engines: ['18d xDrive', '20d xDrive'] },
+    { id: 'x3', name: 'X3', engines: ['2.0d', '3.0d'] }
+  ],
+  mercedes: [
+    { id: 'classec', name: 'Classe C (W203 / W204 / W205)', engines: ['220 CDI', '200 CDI'] },
+    { id: 'sprinter', name: 'Sprinter', engines: ['311 CDI', '313 CDI', '316 CDI'] },
+    { id: 'vito', name: 'Vito', engines: ['111 CDI', '115 CDI'] }
+  ],
+  chevrolet: [
+    { id: 'sail', name: 'Sail (Berline / Hatchback)', engines: ['1.2 Ess', '1.4 Ess'] },
+    { id: 'spark', name: 'Spark', engines: ['1.0 Ess', '1.2 Ess'] },
+    { id: 'aveo', name: 'Aveo', engines: ['1.2 Ess', '1.4 Ess'] },
+    { id: 'optra', name: 'Optra', engines: ['1.5 Ess', '1.6 Ess'] },
+    { id: 'cruze', name: 'Cruze', engines: ['1.6 Ess', '2.0 VCDi'] }
+  ],
+  nissan: [
+    { id: 'micra', name: 'Micra', engines: ['1.2 Ess', '1.5 dCi'] },
+    { id: 'sunny', name: 'Sunny', engines: ['1.5 Ess'] },
+    { id: 'qashqai', name: 'Qashqai', engines: ['1.5 dCi', '1.6 dCi', '1.2 DIG-T'] },
+    { id: 'navara', name: 'Navara D40 / D23', engines: ['2.5 dCi', '2.3 dCi'] },
+    { id: 'patrol', name: 'Patrol', engines: ['3.0 Di', '4.2 D', '4.8 V6'] }
+  ],
+  fiat: [
+    { id: 'tipo', name: 'Tipo', engines: ['1.4 Fire', '1.6 MultiJet', '1.3 MultiJet'] },
+    { id: 'fiat500', name: 'Fiat 500', engines: ['1.2 Fire', '1.0 Hybrid'] },
+    { id: 'punto', name: 'Grande Punto / Punto Evo', engines: ['1.2 Ess', '1.4 Ess', '1.3 MultiJet'] },
+    { id: 'doblo', name: 'Doblo', engines: ['1.3 MultiJet', '1.6 MultiJet', '1.9 JTD'] },
+    { id: 'fiorino', name: 'Fiorino', engines: ['1.3 MultiJet', '1.4 Fire'] },
+    { id: 'ducato', name: 'Ducato', engines: ['2.3 MultiJet'] }
+  ],
+  ford: [
+    { id: 'fiesta', name: 'Fiesta', engines: ['1.25 Ess', '1.4 TDCi', '1.0 EcoBoost'] },
+    { id: 'focus', name: 'Focus', engines: ['1.6 TDCi', '1.5 TDCi'] },
+    { id: 'ranger', name: 'Ranger', engines: ['2.2 TDCi', '3.2 TDCi'] },
+    { id: 'transit', name: 'Transit', engines: ['2.2 TDCi', '2.0 EcoBlue'] }
+  ],
+  suzuki: [
+    { id: 'swift', name: 'Swift', engines: ['1.2 VVT', '1.3 DDiS'] },
+    { id: 'alto', name: 'Alto / Celerio', engines: ['0.8 Ess', '1.0 Ess'] },
+    { id: 'jimny', name: 'Jimny', engines: ['1.3 VVT', '1.5 VVT'] }
+  ],
+  chery: [
+    { id: 'tiggo2', name: 'Tiggo 2 Pro', engines: ['1.5 VVT'] },
+    { id: 'tiggo4', name: 'Tiggo 4 Pro', engines: ['1.5 Turbo', '1.5 VVT'] },
+    { id: 'tiggo7', name: 'Tiggo 7 Pro', engines: ['1.5 Turbo'] },
+    { id: 'qq', name: 'QQ', engines: ['0.8 Ess', '1.1 Ess'] }
+  ],
+  geely: [
+    { id: 'coolray', name: 'Coolray', engines: ['1.5 TD'] },
+    { id: 'emgrand', name: 'Emgrand', engines: ['1.5 Ess'] },
+    { id: 'gx3pro', name: 'GX3 Pro', engines: ['1.5 Ess'] }
+  ],
+  dfsk: [
+    { id: 'glory580', name: 'Glory 580', engines: ['1.5 Turbo'] },
+    { id: 'k01', name: 'Mini Truck K01 / K02', engines: ['1.0 Ess', '1.3 Ess'] }
+  ],
+  jac: [
+    { id: 's2', name: 'S2 / S3', engines: ['1.5 VVT'] },
+    { id: 't6', name: 'Pick-up T6 / T8', engines: ['2.0 CTI Diesel'] },
+    { id: 'camion1040', name: 'Camion 1040', engines: ['2.8 Diesel Turbo'] }
   ]
 };
 
@@ -102,7 +235,7 @@ export const QUALITY_TYPES = [
   { id: 'casse', label_fr: '🟠 Casse / Occasion', label_ar: '🟠 لاكاس / مستعمل مضمون', desc: 'Démonté véhicule testé avec garantie' }
 ];
 
-export const PARTS_CATALOG = [
+const BASE_PARTS_CATALOG = [
   {
     "id": "cur-sym-01",
     "name": "Kit de Distribution complet (Courroie + Galet + Pompe à eau)",
@@ -7004,3 +7137,5 @@ export const PARTS_CATALOG = [
     "updated_at": "Aujourd'hui"
   }
 ];
+
+export const PARTS_CATALOG = [...OEM_CATALOG_REFERENCES, ...BASE_PARTS_CATALOG];

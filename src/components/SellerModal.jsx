@@ -121,6 +121,43 @@ export function SellerModal({ lang, isOpen, onClose, onAddPart }) {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-3.5 text-xs">
           
+          {/* Quick OEM Template Selector (PartSouq Style) */}
+          <div className="bg-slate-50 p-2.5 rounded-2xl border border-slate-200">
+            <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block mb-1.5 flex items-center gap-1">
+              <span>⚡</span>
+              <span>{isAr ? 'اختيار سريع لقطعة نموذجية (PartSouq Catalogue) :' : 'Remplissage rapide par pièce type :'}</span>
+            </span>
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+              {[
+                { label: 'Kit Distribution', fr: 'Kit de Distribution complet (Courroie + Galet + Pompe à eau)', ar: 'طقم سير التوزيع كامل مع مضخة الماء (لاشين)', cat: 'moteur', brand: 'Gates / INA', war: 'Garantie 50 000 km' },
+                { label: 'Kit Embrayage', fr: 'Kit d\'Embrayage complet (Disque + Plateau + Butée)', ar: 'طقم ديبراياج كامل مع البوتي', cat: 'embrayage', brand: 'Valeo / LuK', war: 'Garantie 6 mois' },
+                { label: 'Plaquettes Avant', fr: 'Jeu de Plaquettes de frein avant haute endurance', ar: 'طقم بلاكيط فرامل أمامي أصلي', cat: 'freinage', brand: 'Brembo / Ferodo', war: 'Certifié équilibrage' },
+                { label: 'Disques de Frein', fr: 'Paire de Disques de frein avant ventilés', ar: 'زوج ديسك فرامل أمامي مهوى', cat: 'freinage', brand: 'Brembo / Bosch', war: 'Garantie sans voilage' },
+                { label: 'Amortisseurs Avant', fr: 'Amortisseurs avant à gaz renforcés', ar: 'مساعد الصدمات الأمامي غاز', cat: 'suspension', brand: 'Sachs / Monroe', war: 'Garantie 40 000 km' },
+                { label: 'Turbo Garret', fr: 'Turbo complet avec capsule de régulation', ar: 'تيربو كامل مع صمام التحكم', cat: 'moteur', brand: 'Garrett Motion', war: 'Garantie 1 an' },
+                { label: 'Vanne EGR', fr: 'Vanne EGR électrique avec refroidisseur', ar: 'صمام إي جي آر كهربائي مع المبرد', cat: 'moteur', brand: 'Valeo Origine', war: 'Garantie 1 an' },
+                { label: 'Alternateur 120A', fr: 'Alternateur 120A régulateur intégré', ar: 'دينامو شحن 120 أمبير', cat: 'electricite', brand: 'Valeo / Bosch', war: 'Garantie 6 mois' },
+                { label: 'Injecteur dCi/TDI', fr: 'Injecteur Common Rail piezo-électrique', ar: 'حاقن مازوت ديزل أصلي', cat: 'moteur', brand: 'Delphi / Bosch', war: 'Garantie avec fiche banc' },
+                { label: 'Crémaillère', fr: 'Crémaillère de direction assistée avec biellettes', ar: 'كريمايار الاتجاه الهيدروليكي', cat: 'suspension', brand: 'Origine Constructeur', war: 'Garantie 1 an' }
+              ].map((tpl, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => {
+                    setName(tpl.fr);
+                    setNameAr(tpl.ar);
+                    setCategory(tpl.cat);
+                    setPartBrand(tpl.brand);
+                    setWarranty(tpl.war);
+                  }}
+                  className="px-2.5 py-1 rounded-lg bg-white hover:bg-autoblue-50 border border-slate-200 hover:border-autoblue-400 text-slate-700 hover:text-autoblue-800 text-[11px] font-bold whitespace-nowrap transition active:scale-95 shrink-0 shadow-2xs"
+                >
+                  + {tpl.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Part Name */}
           <div>
             <label className="block font-black text-slate-700 mb-1">
@@ -132,7 +169,7 @@ export function SellerModal({ lang, isOpen, onClose, onAddPart }) {
               placeholder="Ex: Kit Embrayage, Plaquettes avant, Pare-choc..."
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl font-bold text-slate-800 outline-none focus:ring-2 focus:ring-autoblue-500"
+              className="w-full px-3 py-2 bg-slate-50 border-2 border-slate-200 focus:border-autoblue-600 rounded-xl font-bold text-slate-800 outline-none transition"
             />
           </div>
 

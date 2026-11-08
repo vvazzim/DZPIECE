@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { SearchBarWithFilters } from './components/SearchBarWithFilters';
 import { PartsMap } from './components/PartsMap';
 import { PartsList } from './components/PartsList';
+import { PartsouqCondensedTable } from './components/PartsouqCondensedTable';
 import { SellerModal } from './components/SellerModal';
 import { PartDetailModal } from './components/PartDetailModal';
 import { PARTS_CATALOG } from './data/autoData';
@@ -24,11 +25,15 @@ export function App() {
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sortBy, setSortBy] = useState('price-asc');
 
-  // Dynamic Parts inventory (209 items scraped from Dizness & market hubs)
+  // Dynamic Parts inventory (Scraped real stock + Curated PartSouq-style OEM Catalog)
   const [parts, setParts] = useState(() => {
     try {
-      const saved = localStorage.getItem('pieces_auto_parts');
-      return saved ? JSON.parse(saved) : PARTS_CATALOG;
+      const saved = localStorage.getItem('pieces_auto_parts_v2');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.length >= PARTS_CATALOG.length) return parsed;
+      }
+      return PARTS_CATALOG;
     } catch (e) {
       return PARTS_CATALOG;
     }
@@ -42,7 +47,7 @@ export function App() {
   // Persist parts changes
   useEffect(() => {
     try {
-      localStorage.setItem('pieces_auto_parts', JSON.stringify(parts));
+      localStorage.setItem('pieces_auto_parts_v2', JSON.stringify(parts));
     } catch (e) {}
   }, [parts]);
 
@@ -377,6 +382,20 @@ export function App() {
                 onDeletePart={handleDeleteScammer}
               />
             </div>
+          </div>
+        )}
+
+        {/* Condensed PartSouq-style OEM Table View */}
+        {viewMode === 'table' && (
+          <div className="space-y-3">
+            <PartsouqCondensedTable
+              lang={lang}
+              parts={filteredParts}
+              selectedPart={selectedPart}
+              onSelectPart={setSelectedPart}
+              onOpenDetail={(p) => setDetailModalPart(p)}
+              onShowOnMap={handleShowOnMap}
+            />
           </div>
         )}
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Phone, MessageCircle, MapPin, ShieldCheck, CheckCircle2, Car, Store, ExternalLink, ThumbsUp, ThumbsDown, Trash2 } from 'lucide-react';
+import { BrandLogo } from './BrandLogos';
 
 export function PartDetailModal({ lang, part, onClose, onShowOnMap, onVote, onDeleteScammer }) {
   const isAr = lang === 'ar';
@@ -136,9 +137,10 @@ export function PartDetailModal({ lang, part, onClose, onShowOnMap, onVote, onDe
               {part.compatible_models.map((cm, i) => (
                 <span
                   key={i}
-                  className="px-2 py-1 bg-slate-100 text-slate-700 font-bold rounded-lg text-[11px]"
+                  className="px-2 py-0.5 bg-slate-100 text-slate-700 font-bold rounded-md text-[11px] flex items-center gap-1 border border-slate-200"
                 >
-                  🚗 {cm}
+                  <BrandLogo brand={part.brand} className="w-3.5 h-3.5 text-slate-500" />
+                  <span>{cm}</span>
                 </span>
               ))}
             </div>

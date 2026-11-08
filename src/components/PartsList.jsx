@@ -15,6 +15,7 @@ import {
   AlertTriangle,
   Trash2
 } from 'lucide-react';
+import { BrandLogo } from './BrandLogos';
 
 export function PartsList({
   lang,
@@ -126,9 +127,10 @@ export function PartsList({
                 {part.compatible_models.map((cm, idx) => (
                   <span
                     key={idx}
-                    className="text-[11px] font-extrabold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200"
+                    className="text-[11px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 border border-slate-200/80 flex items-center gap-1"
                   >
-                    🚗 {cm}
+                    <BrandLogo brand={part.brand} className="w-3.5 h-3.5 text-slate-500" />
+                    <span>{cm}</span>
                   </span>
                 ))}
               </div>
