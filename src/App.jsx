@@ -6,6 +6,7 @@ import { PartsList } from './components/PartsList';
 import { PartsouqCondensedTable } from './components/PartsouqCondensedTable';
 import { SellerModal } from './components/SellerModal';
 import { PartDetailModal } from './components/PartDetailModal';
+import { InstallModal } from './components/InstallModal';
 import { PARTS_CATALOG } from './data/autoData';
 import { Store, PlusCircle, Wrench, ShieldCheck, Sparkles, MapPin, TrendingDown, CheckCircle2, AlertTriangle } from 'lucide-react';
 
@@ -43,6 +44,34 @@ export function App() {
   const [detailModalPart, setDetailModalPart] = useState(null);
   const [isSellerModalOpen, setIsSellerModalOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
+
+  // PWA Homescreen Install State
+  const [isInstallOpen, setIsInstallOpen] = useState(false);
+  const [showInstallBanner, setShowInstallBanner] = useState(true);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  const handleNativeInstall = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice;
+      if (choice && choice.outcome === 'accepted') {
+        setShowInstallBanner(false);
+        setIsInstallOpen(false);
+      }
+      setDeferredPrompt(null);
+    } else {
+      setIsInstallOpen(true);
+    }
+  };
 
   // Persist parts changes
   useEffect(() => {
@@ -440,6 +469,41 @@ export function App() {
 
       </main>
 
+      {/* Floating PWA Install Bar for Mobile & First Visit */}
+      {showInstallBanner && (
+        <div className="fixed bottom-3 left-3 right-3 max-w-sm mx-auto z-40 bg-slate-950 text-white p-2.5 sm:p-3 rounded-2xl shadow-2xl flex items-center justify-between border border-slate-800 animate-in slide-in-from-bottom duration-300">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0">
+              <img src="/favicon.svg" alt="DZPIECE" className="w-5 h-5" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-black text-white leading-tight truncate">DZPIECE</p>
+              <p className="text-[10px] text-slate-400 font-semibold truncate">
+                {lang === 'ar' ? 'تثبيت التطبيق على هاتفك' : 'Épingler l\'appli sur l\'accueil'}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button
+              type="button"
+              onClick={handleNativeInstall}
+              className="px-2.5 py-1.5 bg-gradient-to-r from-autoblue-600 to-autoblue-500 hover:from-autoblue-500 hover:to-autoblue-400 active:scale-95 text-white font-black text-[11px] rounded-xl shadow-xs transition"
+            >
+              {lang === 'ar' ? 'تثبيت' : 'Installer'}
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowInstallBanner(false)}
+              className="text-slate-400 hover:text-white p-1 text-sm font-bold"
+              title="Fermer"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Modals */}
       <SellerModal
         lang={lang}
@@ -455,6 +519,14 @@ export function App() {
         onShowOnMap={handleShowOnMap}
         onVote={handleVote}
         onDeleteScammer={handleDeleteScammer}
+      />
+
+      <InstallModal
+        lang={lang}
+        isOpen={isInstallOpen}
+        onClose={() => setIsInstallOpen(false)}
+        onNativeInstall={handleNativeInstall}
+        canNativeInstall={!!deferredPrompt}
       />
 
     </div>

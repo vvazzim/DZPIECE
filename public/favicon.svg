@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Dark High-Contrast Background Tile -->
+  <rect width="512" height="512" rx="128" fill="#020617"/>
+  
+  <!-- Subtle Neon Ring Accent -->
+  <circle cx="256" cy="256" r="200" stroke="#0284c7" stroke-width="12" stroke-opacity="0.3"/>
+  
+  <!-- Outer Ventilated Brake Disc / Gear -->
+  <circle cx="256" cy="256" r="160" stroke="#0284c7" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="70" stroke="#38bdf8" stroke-width="16"/>
+  <circle cx="256" cy="256" r="30" fill="#f59e0b"/>
+
+  <!-- Disc Cooling Slots -->
+  <line x1="256" y1="76" x2="256" y2="116" stroke="#0284c7" stroke-width="18" stroke-linecap="round"/>
+  <line x1="256" y1="396" x2="256" y2="436" stroke="#0284c7" stroke-width="18" stroke-linecap="round"/>
+  <line x1="76" y1="256" x2="116" y2="256" stroke="#0284c7" stroke-width="18" stroke-linecap="round"/>
+  <line x1="396" y1="256" x2="436" y2="256" stroke="#0284c7" stroke-width="18" stroke-linecap="round"/>
+  
+  <line x1="128" y1="128" x2="158" y2="158" stroke="#38bdf8" stroke-width="16" stroke-linecap="round"/>
+  <line x1="354" y1="354" x2="384" y2="384" stroke="#38bdf8" stroke-width="16" stroke-linecap="round"/>
+  <line x1="128" y1="384" x2="158" y2="354" stroke="#38bdf8" stroke-width="16" stroke-linecap="round"/>
+  <line x1="354" y1="158" x2="384" y2="128" stroke="#38bdf8" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- DZ Brand Initials in Bold Modern Typography -->
+  <text x="256" y="475" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="#ffffff" letter-spacing="4">DZPIECE</text>
+</svg>

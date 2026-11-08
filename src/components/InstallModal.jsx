@@ -1,0 +1,97 @@
+import React from 'react';
+import { X, Smartphone, Share, MoreVertical } from 'lucide-react';
+import { DzPieceEmblem } from './BrandLogos';
+
+export function InstallModal({ lang, isOpen, onClose, onNativeInstall, canNativeInstall }) {
+  const isAr = lang === 'ar';
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[99999] bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4">
+      <div className="bg-white rounded-3xl max-w-sm w-full p-5 shadow-2xl space-y-4 border border-slate-100 animate-in fade-in zoom-in-95 duration-200">
+        
+        {/* Header with DZPIECE Icon & Title */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-10 h-10 rounded-2xl bg-slate-950 text-autoblue-400 border border-slate-800 flex items-center justify-center shadow-xs shrink-0">
+              <DzPieceEmblem className="w-5 h-5 text-autoblue-400" />
+            </div>
+            <div>
+              <h3 className="font-black text-slate-900 text-base leading-tight">
+                {isAr ? 'تثبيت تطبيق DZPIECE' : 'Installer l\'application DZPIECE'}
+              </h3>
+              <p className="text-[11px] text-slate-400 font-bold">
+                {isAr ? 'يعمل كتطبيق هاتف أصلي بدون تحميل' : 'Accès direct et rapide comme une vraie app'}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-1.5 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Direct Native Install Button if supported */}
+        {canNativeInstall && (
+          <button
+            onClick={onNativeInstall}
+            className="w-full py-2.5 bg-gradient-to-r from-autoblue-600 to-autoblue-700 hover:from-autoblue-500 hover:to-autoblue-600 text-white font-black rounded-xl text-xs flex items-center justify-center gap-2 shadow-md shadow-autoblue-600/25 active:scale-95 transition"
+          >
+            <Smartphone className="w-4 h-4" />
+            <span>{isAr ? 'تثبيت فوري على الشاشة الرئيسية' : 'Installer directement en 1 clic'}</span>
+          </button>
+        )}
+
+        {/* Android Guide */}
+        <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2">
+          <div className="flex items-center gap-1.5 text-xs font-black text-slate-800">
+            <span>🤖 Android (Google Chrome)</span>
+          </div>
+          <ol className="text-xs text-slate-600 space-y-1.5 font-semibold list-decimal list-inside">
+            <li>
+              {isAr ? 'اضغط على قائمة النقاط الثلاث' : 'Appuyez sur les 3 points en haut'}{' '}
+              <MoreVertical className="w-3.5 h-3.5 inline text-slate-500" />
+            </li>
+            <li>
+              {isAr ? 'اختر "إضافة إلى الشاشة الرئيسية"' : 'Choisissez "Ajouter à l\'écran d\'accueil"'}
+            </li>
+            <li>
+              {isAr ? 'اضغط "تثبيت"' : 'Validez en cliquant sur "Installer"'}
+            </li>
+          </ol>
+        </div>
+
+        {/* iPhone / iOS Guide */}
+        <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2">
+          <div className="flex items-center gap-1.5 text-xs font-black text-slate-800">
+            <span>🍏 iPhone (Safari)</span>
+          </div>
+          <ol className="text-xs text-slate-600 space-y-1.5 font-semibold list-decimal list-inside">
+            <li>
+              {isAr ? 'اضغط على زر المشاركة' : 'Appuyez sur le bouton Partager'}{' '}
+              <Share className="w-3.5 h-3.5 inline text-blue-500" />
+            </li>
+            <li>
+              {isAr ? 'مرر للأسفل واختر "على الشاشة الرئيسية"' : 'Touchez "Sur l\'écran d\'accueil"'}
+            </li>
+            <li>
+              {isAr ? 'اضغط على "إضافة"' : 'Touchez "Ajouter" en haut à droite'}
+            </li>
+          </ol>
+        </div>
+
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-bold rounded-xl text-xs transition"
+        >
+          {isAr ? 'حسناً، فهمت' : 'J\'ai compris'}
+        </button>
+
+      </div>
+    </div>
+  );
+}
