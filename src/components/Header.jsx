@@ -15,7 +15,7 @@ export function Header({
   const isAr = lang === 'ar';
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-950 text-white border-b border-slate-800/90 select-none">
+    <header className="sticky top-0 z-50 bg-slate-950 text-white border-b border-slate-800/90 select-none safe-top">
       
       {/* Top Banner: Brand, Actions, View Mode & Language */}
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2 flex items-center justify-between gap-2">

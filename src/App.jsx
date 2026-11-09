@@ -471,7 +471,7 @@ export function App() {
 
       {/* Floating PWA Install Bar for Mobile & First Visit */}
       {showInstallBanner && (
-        <div className="fixed bottom-3 left-3 right-3 max-w-sm mx-auto z-40 bg-slate-950 text-white p-2.5 sm:p-3 rounded-2xl shadow-2xl flex items-center justify-between border border-slate-800 animate-in slide-in-from-bottom duration-300">
+        <div className="fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom,0px))] left-3 right-3 max-w-sm mx-auto z-40 bg-slate-950 text-white p-2.5 sm:p-3 rounded-2xl shadow-2xl flex items-center justify-between border border-slate-800 animate-in slide-in-from-bottom duration-300">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0">
               <img src="/favicon.svg" alt="DZPIECE" className="w-5 h-5" />
